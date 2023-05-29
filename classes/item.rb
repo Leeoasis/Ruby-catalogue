@@ -2,7 +2,6 @@ require 'date'
 
 class Item
   def initialize(genre, author, label, publish_date, archived)
-    @id = rand(1..1000)
     @genre = genre
     @author = author
     @label = label
