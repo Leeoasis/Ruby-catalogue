@@ -21,6 +21,4 @@ class Item
   end
 end
 
-item = Item.new(Date.new(2020, 1, 1), false)
-puts item.can_be_archived?
-puts item.move_to_archive
+
