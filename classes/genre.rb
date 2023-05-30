@@ -16,10 +16,4 @@ class Genre
   end
 end
 
-genre = Genre.new('Action')
-puts genre.name
-puts genre.id
-item = Item.new(Date.new(2020, 1, 1), false)
-genre.add_item(item)
-puts genre.items
-puts item.genre.name
+
