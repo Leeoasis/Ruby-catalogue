@@ -1,10 +1,18 @@
 require_relative '../modules/display_menu_options'
+require_relative '../modules/book_module'
 
 class App
   include DisplayMenuOptions
+  include BooksUi
 
   def initialize
-    @books = []
+    @book_file = 'data/books.json'
+    @books = if File.exist?(@book_file)
+               file_contents = File.read(@book_file)
+               file_contents.empty? ? [] : JSON.parse(file_contents)
+             else
+               []
+             end
     @music_albums = []
     @games = []
   end
