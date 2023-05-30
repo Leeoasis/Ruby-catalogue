@@ -10,22 +10,18 @@ class Book < Item
     @cover_state = cover_state
   end
 
-  def to_json(*args)
+  def to_h
     {
-      'id' => @id,
-      'title' => @title,
-      'author' => @author&.to_json,
-      'publisher' => @publisher,
-      'label' => @label,
-      'archived' => @archived,
-      'publish_date' => @publish_date,
-      'cover_state' => @cover_state
-    }.to_json(*args)
+      title: @title,
+      publisher: @publisher,
+      publish_date: @publish_date,
+      cover_state: @cover_state
+    }
   end
 
   private
 
   def can_be_archived?
-    super || @cover_state == 'bad'
+    super || (@cover_state == 'bad' && @publish_date.strftime('%Y-%m-%d') < '2022-01-01')
   end
 end
