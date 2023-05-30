@@ -20,8 +20,10 @@ class App
     loop do
       display_menu_options
       option = gets.chomp.to_i
-      break if option == 10
-
+      if option == 10
+        puts 'thank you for using our app!' 
+         break if option == 10 
+      end
       handle_option(option)
     end
   end
