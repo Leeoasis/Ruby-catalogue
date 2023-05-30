@@ -8,7 +8,7 @@ class Book < Item
     @title = title
     @publisher = publisher
     @cover_state = cover_state
-  end
+  
 
   def to_json(*args)
     {
