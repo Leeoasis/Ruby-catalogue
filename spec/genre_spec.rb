@@ -10,7 +10,7 @@ describe Genre do
   end
 
   it 'add item to items array' do
-    item = Item.new(Date.new(2020, 1, 1), false)
+    item = Item.new(Date.new(2020, 1, 1))
     @genre.add_item(item)
     expect(@genre.items).to include(item)
   end
