@@ -31,11 +31,11 @@ class App
     when 1
       list_books
     when 2
-     list_music_albums
+      list_music_albums
     when 3
       list_games
     when 4
-     list_genres
+      list_genres
     when 5
       list_label
     when 6
@@ -44,8 +44,8 @@ class App
       add_book
     when 8
       add_music_album
-     Collections.save_data('music_albums', @music_albums)unless @music_albums.empty?
-     Collections.save_data('genres', @genres) unless @genres.empty?
+      Collections.save_data('music_albums', @music_albums) unless @music_albums.empty?
+      Collections.save_data('genres', @genres) unless @genres.empty?
     when 9
       add_game
     else
