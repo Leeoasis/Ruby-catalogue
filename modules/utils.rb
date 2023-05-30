@@ -1,4 +1,5 @@
 require 'date'
+require 'fileutils'
 
 module Utils
   def input_date
@@ -24,4 +25,8 @@ module Utils
     value = gets.chomp.downcase
     check_boolean?(value)
   end
+  def check_data_folder
+    FileUtils.mkdir_p('./data')
+  end
+
 end
