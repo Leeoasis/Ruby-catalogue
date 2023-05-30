@@ -3,15 +3,15 @@ require_relative '../classes/label'
 require_relative '../classes/author'
 
 module GameLister
-    @@games = []
-    @@authors = []
+  @games = []
+  @authors = []
 
   def list_games
-    if @@games.empty?
+    if @games.empty?
       puts 'No games available'
     else
       puts 'List of games:'
-      @@games.each_with_index do |game, index|
+      @games.each_with_index do |game, index|
         print "#{index + 1}. #{game.title} "
         puts "published on #{game.publish_date} and is #{game.multiplayer ? 'multiplayer' : 'singleplayer'}"
       end
@@ -36,5 +36,4 @@ module GameLister
     @games << game
     puts 'Game created successfully'
   end
-  
 end
