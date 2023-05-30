@@ -15,5 +15,3 @@ class Genre
     item.genre = self
   end
 end
-
-

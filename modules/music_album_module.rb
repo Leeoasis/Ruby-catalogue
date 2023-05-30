@@ -6,13 +6,14 @@ require_relative './genre_module'
 module MusicAlbumModule
   include Utils
   include GenreModule
-def list_music_albums
+  def list_music_albums
     if @music_albums.empty?
       puts 'No music albums available'
     else
       puts 'List of music albums:'
       @music_albums.each_with_index do |music_album, index|
-        puts "#{index + 1}. Album published on #{music_album.publish_date} genre: #{music_album.genre.name} and is #{music_album.on_spotify ? 'available on spotify' : 'not available on spotify'}"
+        print "#{index + 1}. Album published on #{music_album.publish_date} "
+        puts "genre: #{music_album.genre.name} and is #{music_album.on_spotify ? 'available on spotify' : 'not available on spotify'}"
       end
     end
     puts "\n"
@@ -28,7 +29,7 @@ def list_music_albums
     @music_albums << music_album
     genre = add_genre
     genre.add_item(music_album)
-    puts "music album added successfully!"
+    puts 'music album added successfully!'
     puts "\n"
   end
 end

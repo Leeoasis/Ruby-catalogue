@@ -1,7 +1,6 @@
 require_relative '../classes/genre'
 
 module GenreModule
-
   def select_genre
     puts 'Select a genre from the list:'
     list_genres
@@ -31,7 +30,7 @@ module GenreModule
     genre = Genre.new(name)
     @genres << genre
     genre
-   end
+  end
 
   def add_genre
     if @genres.empty?
