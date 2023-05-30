@@ -1,13 +1,12 @@
 require_relative 'item'
 
 class Label
-  attr_accessor :title, :color, :items
+  attr_accessor :title, :items
   attr_reader :id
 
-  def initialize(title, color)
+  def initialize(title)
     @id = rand(1..1000)
     @title = title
-    @color = color
     @items = []
   end
 
@@ -20,7 +19,6 @@ class Label
     {
       'id' => @id,
       'title' => @title,
-      'color' => @color,
       'items' => @items
     }.to_json(*args)
   end
