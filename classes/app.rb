@@ -21,8 +21,8 @@ class App
       display_menu_options
       option = gets.chomp.to_i
       if option == 10
-        puts 'thank you for using our app!' 
-         break if option == 10 
+        puts 'thank you for using our app!'
+        break if option == 10
       end
       handle_option(option)
     end
