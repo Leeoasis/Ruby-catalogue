@@ -10,13 +10,16 @@ class Item
     @archived = can_be_archived?
   end
 
+  def move_to_archive
+    @archived = true if can_be_archived?
+  end
+
+  private
+
   def can_be_archived?
+    @publish_date = Date.parse(@publish_date) unless @publish_date.is_a?(Date)
     today = Date.today
     ten_years_ago = (today - (10 * 365))
     @publish_date < ten_years_ago
-  end
-
-  def move_to_archive
-    @archived = true if can_be_archived?
   end
 end
