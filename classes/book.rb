@@ -1,31 +1,31 @@
 require_relative 'item'
 
 class Book < Item
-  attr_accessor :title, :author, :publisher, :label, :cover_state
+  attr_accessor :publisher, :cover_state
 
-  def initialize(title, author, publisher, publish_date)
-    super(publish_date, false)
+  def initialize(title, publisher, publish_date, cover_state)
+    super(publish_date)
     @title = title
-    @author = author
     @publisher = publisher
-    @label = nil
-    @cover_state = 'bad'
-  end
-
-  def can_be_archived?
-    super() || @cover_state == 'bad'
+    @cover_state = cover_state
   end
 
   def to_json(*args)
     {
       'id' => @id,
       'title' => @title,
-      'author' => @author,
+      'author' => @author&.to_json,
       'publisher' => @publisher,
       'label' => @label,
       'archived' => @archived,
       'publish_date' => @publish_date,
       'cover_state' => @cover_state
     }.to_json(*args)
+  end
+
+  private
+
+  def can_be_archived?
+    super || @cover_state == 'bad'
   end
 end
