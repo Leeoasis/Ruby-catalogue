@@ -1,12 +1,15 @@
 require_relative '../modules/display_menu_options'
+require_relative '../modules/music_album_module'
 
 class App
   include DisplayMenuOptions
+  include MusicAlbumModule
 
   def initialize
     @books = []
     @music_albums = []
     @games = []
+    @genres = []
   end
 
   def run
