@@ -13,11 +13,3 @@ class MusicAlbum < Item
     super && @on_spotify
   end
 end
-
-music_album = MusicAlbum.new(Date.new(1968, 11, 22), false, true)
-puts music_album.can_be_archived?
-# => true
-
-music_album = MusicAlbum.new(Date.new(1968, 11, 22), false, false)
-puts music_album.can_be_archived?
-# => false
