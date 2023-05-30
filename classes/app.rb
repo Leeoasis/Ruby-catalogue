@@ -1,23 +1,29 @@
 require_relative '../modules/display_menu_options'
 require_relative '../modules/music_album_module'
+require_relative '../modules/utils'
+require_relative '../classes/collections'
 
 class App
   include DisplayMenuOptions
   include MusicAlbumModule
+  include Utils
 
   def initialize
+    check_data_folder
     @books = []
-    @music_albums = []
+    @music_albums = Collections.load_data('music_albums').empty? ? [] : Collections.load_data('music_albums')
     @games = []
-    @genres = []
+    @genres = Collections.load_data('genres').empty? ? [] : Collections.load_data('genres')
   end
 
   def run
     loop do
       display_menu_options
       option = gets.chomp.to_i
-      break if option == 10
-
+      if option == 10
+        puts 'thank you for using our app!'
+        break if option == 10
+      end
       handle_option(option)
     end
   end
@@ -40,6 +46,8 @@ class App
       add_book
     when 8
       add_music_album
+      Collections.save_data('music_albums', @music_albums) unless @music_albums.empty?
+      Collections.save_data('genres', @genres) unless @genres.empty?
     when 9
       add_game
     else

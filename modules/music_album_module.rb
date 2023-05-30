@@ -12,7 +12,7 @@ module MusicAlbumModule
     else
       puts 'List of music albums:'
       @music_albums.each_with_index do |music_album, index|
-        print "#{index + 1}. Album published on #{music_album.publish_date} "
+        print "#{index + 1}. [Album] published on #{music_album.publish_date} "
         puts "genre: #{music_album.genre.name} and is #{music_album.on_spotify ? 'available on spotify' : 'not available on spotify'}"
       end
     end
