@@ -3,7 +3,6 @@ require 'fileutils'
 
 module Utils
   def input_date
-    puts 'input the date of the rental'
     print 'Year (yyyy): '
     year = gets.chomp.to_i
     print 'Month of the year (mm): '
