@@ -6,7 +6,7 @@ require_relative 'game'
 require_relative '../modules/utils'
 require_relative '../classes/collections'
 require_relative '../modules/author_module'
-  
+
 class App
   include DisplayMenuOptions
   include MusicAlbumModule
