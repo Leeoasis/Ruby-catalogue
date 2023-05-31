@@ -1,11 +1,29 @@
 require_relative '../modules/display_menu_options'
 require_relative '../modules/book_module'
-
+require_relative '../modules/music_album_module'
+require_relative '../modules/game_list_module'
+require_relative 'game'
+require_relative '../modules/utils'
+require_relative '../classes/collections'
+require_relative '../modules/author_module'
+  
 class App
+  include DisplayMenuOptions
+  include MusicAlbumModule
+  include GameLister
+  include Utils
+  include Authorlist
   include DisplayMenuOptions
   include BooksUi
 
   def initialize
+    check_data_folder
+    @books = []
+    @music_albums = Collections.load_data('music_albums').empty? ? [] : Collections.load_data('music_albums')
+    @games = Collections.load_data('games').empty? ? [] : Collections.load_data('games')
+    @genres = []
+    @authors = Collections.load_data('authors').empty? ? [] : Collections.load_data('authors')
+    @genres = Collections.load_data('genres').empty? ? [] : Collections.load_data('genres')
     @book_file = 'data/books.json'
 
     @books = if File.exist?(@book_file)
@@ -20,8 +38,10 @@ class App
     loop do
       display_menu_options
       option = gets.chomp.to_i
-      break if option == 10
-
+      if option == 10
+        puts 'thank you for using our app!'
+        break if option == 10
+      end
       handle_option(option)
     end
   end
@@ -44,8 +64,12 @@ class App
       add_book
     when 8
       add_music_album
+      Collections.save_data('music_albums', @music_albums) unless @music_albums.empty?
+      Collections.save_data('genres', @genres) unless @genres.empty?
     when 9
       add_game
+      Collections.save_data('games', @games) unless @games.empty?
+      Collections.save_data('authors', @authors) unless @authors.empty?
     else
       puts 'Invalid option! Please choose a valid option.'
     end

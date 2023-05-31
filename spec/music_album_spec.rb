@@ -2,7 +2,7 @@ require_relative '../classes/music_album'
 
 describe MusicAlbum do
   before :each do
-    @music_album = MusicAlbum.new(Date.new(2020, 1, 1), false, true)
+    @music_album = MusicAlbum.new(Date.new(2020, 1, 1), true)
   end
   it 'takes three parameters and returns a MusicAlbum object' do
     expect(@music_album).to be_an_instance_of MusicAlbum
