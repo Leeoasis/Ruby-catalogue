@@ -33,6 +33,7 @@ module GameLister
     game = Game.new(publish_date, multiplayer, last_played_at)
     author = Author.new(first_name, last_name)
     author.add_item(game)
+    @authors << author
     @games << game
     puts 'Game created successfully'
   end

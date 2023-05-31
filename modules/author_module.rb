@@ -6,11 +6,10 @@ module Authorlist
       puts 'There are no authors in the library'
       return
     end
-
+    puts 'List of authors:'
     @authors.each do |author|
-      puts "First name: #{author.first_name}"
-      puts "Last name: #{author.last_name}"
-      puts "\n"
+      puts "First name: #{author.first_name} - Last name: #{author.last_name}"
     end
+    puts "\n"
   end
 end
