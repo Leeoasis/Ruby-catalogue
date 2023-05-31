@@ -23,3 +23,18 @@ CREATE TABLE music_album {
   PRIMARY KEY (id),
   CONSTRAINT fk_genre FOREIGN KEY (genre_id) REFERENCES genre(id)
 }
+
+CREATE TABLE game (
+    id  INT,
+    multiplayer BOOLEAN,
+    last_played_at DATE,
+    PRIMARY KEY(id),
+    FOREIGN KEY(id) REFERENCES item(id)
+);
+
+CREATE TABLE author (
+    id  INT GENERATED ALWAYS AS IDENTITY,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    PRIMARY KEY(id)
+);
