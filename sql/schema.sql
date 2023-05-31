@@ -19,6 +19,7 @@ CREATE TABLE music_album {
   id int GENERATED ALWAYS AS IDENTITY,
   on_spotify BOOLEAN,
   publish_date DATE,
+  archived BOOLEAN,
   PRIMARY KEY (id),
   CONSTRAINT fk_genre FOREIGN KEY (genre_id) REFERENCES genre(id)
 }
