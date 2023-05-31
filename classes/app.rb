@@ -7,14 +7,13 @@ class App
 
   def initialize
     @book_file = 'data/books.json'
+
     @books = if File.exist?(@book_file)
                file_contents = File.read(@book_file)
                file_contents.empty? ? [] : JSON.parse(file_contents)
              else
                []
              end
-    @music_albums = []
-    @games = []
   end
 
   def run
