@@ -11,6 +11,8 @@ module DisplayMenuOptions
     puts '8. Add a music album'
     puts '9. Add a game'
     puts '10. Quit'
+    puts ''
     print 'Enter your choice: '
+    puts ''
   end
 end

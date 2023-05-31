@@ -1,4 +1,5 @@
 require_relative '../modules/display_menu_options'
+require_relative '../modules/book_module'
 require_relative '../modules/music_album_module'
 require_relative '../modules/game_list_module'
 require_relative 'game'
@@ -12,6 +13,8 @@ class App
   include GameLister
   include Utils
   include Authorlist
+  include DisplayMenuOptions
+  include BooksUi
 
   def initialize
     check_data_folder
@@ -21,6 +24,14 @@ class App
     @genres = []
     @authors = Collections.load_data('authors').empty? ? [] : Collections.load_data('authors')
     @genres = Collections.load_data('genres').empty? ? [] : Collections.load_data('genres')
+    @book_file = 'data/books.json'
+
+    @books = if File.exist?(@book_file)
+               file_contents = File.read(@book_file)
+               file_contents.empty? ? [] : JSON.parse(file_contents)
+             else
+               []
+             end
   end
 
   def run
