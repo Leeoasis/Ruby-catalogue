@@ -4,7 +4,6 @@ require_relative '../classes/author'
 require_relative './utils'
 
 module GameLister
-
   include Utils
   def list_games
     if @games.empty?

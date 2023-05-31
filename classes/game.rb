@@ -15,14 +15,15 @@ class Game < Item
     @last_played_at = Date.parse(@last_played_at) unless @last_played_at.is_a?(Date)
     super && @last_played_at < (Date.today - (2 * 365))
   end
+
   def to_json(*args)
-   {
-    JSON.create_id => self.class.name,
+    {
+      JSON.create_id => self.class.name,
       'publish_date' => @publish_date,
       'multiplayer' => @multiplayer,
       'last_played_at' => @last_played_at,
       'author' => @author
-   }.to_json(*args)
+    }.to_json(*args)
   end
 
   def self.json_create(object)
@@ -31,6 +32,4 @@ class Game < Item
     author.add_item(game)
     game
   end
-
 end
-

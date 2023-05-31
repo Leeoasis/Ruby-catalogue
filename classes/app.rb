@@ -11,7 +11,7 @@ class App
   include MusicAlbumModule
   include GameLister
   include Utils
-include Authorlist
+  include Authorlist
 
   def initialize
     check_data_folder

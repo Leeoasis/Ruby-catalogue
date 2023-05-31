@@ -13,6 +13,7 @@ class Author
     @items << item
     item.author = self
   end
+
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
@@ -20,8 +21,8 @@ class Author
       'last_name' => @last_name
     }.to_json(*args)
   end
-  def self.json_create(object)
-    author = new(object['first_name'], object['last_name'])
-  end
 
+  def self.json_create(object)
+    new(object['first_name'], object['last_name'])
+  end
 end
