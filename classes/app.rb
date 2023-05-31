@@ -4,20 +4,22 @@ require_relative '../modules/game_list_module'
 require_relative 'game'
 require_relative '../modules/utils'
 require_relative '../classes/collections'
+require_relative '../modules/author_module'
 
 class App
   include DisplayMenuOptions
   include MusicAlbumModule
   include GameLister
   include Utils
+include Authorlist
 
   def initialize
     check_data_folder
     @books = []
     @music_albums = Collections.load_data('music_albums').empty? ? [] : Collections.load_data('music_albums')
-    @games = []
+    @games = Collections.load_data('games').empty? ? [] : Collections.load_data('games')
     @genres = []
-    @authors = []
+    @authors = Collections.load_data('authors').empty? ? [] : Collections.load_data('authors')
     @genres = Collections.load_data('genres').empty? ? [] : Collections.load_data('genres')
   end
 
@@ -55,6 +57,8 @@ class App
       Collections.save_data('genres', @genres) unless @genres.empty?
     when 9
       add_game
+      Collections.save_data('games', @games) unless @games.empty?
+      Collections.save_data('authors', @authors) unless @authors.empty?
     else
       puts 'Invalid option! Please choose a valid option.'
     end
