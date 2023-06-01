@@ -4,7 +4,7 @@ require_relative '../classes/label'
 require_relative './utils'
 
 module BooksUi
-include Utils
+  include Utils
 
   def initialize
     @book_file = 'data/books.json'
