@@ -25,13 +25,19 @@ class App
     @authors = Collections.load_data('authors').empty? ? [] : Collections.load_data('authors')
     @genres = Collections.load_data('genres').empty? ? [] : Collections.load_data('genres')
     @book_file = 'data/books.json'
-
+    @labels_file = 'data/labels.json'
     @books = if File.exist?(@book_file)
                file_contents = File.read(@book_file)
                file_contents.empty? ? [] : JSON.parse(file_contents)
              else
                []
              end
+    @labels = if File.exist?(@labels_file)
+                file_contents = File.read(@labels_file)
+                file_contents.empty? ? [] : JSON.parse(file_contents)
+              else
+                []
+              end
   end
 
   def run
