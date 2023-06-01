@@ -63,7 +63,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📺 Presentation <a name="presentation"></a>
-- [Link to video presentation](https://drive.google.com/file/d/1xNiR2_3IRNBrY_58pyiZvZzPmbWpeSl-/view?usp=sharing)
+- [Link to video presentation](https://drive.google.com/file/d/16VbNGHqAvV6UIGr_1glezgBkX-qeAZCP/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
