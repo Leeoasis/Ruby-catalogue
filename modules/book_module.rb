@@ -1,8 +1,11 @@
 require 'json'
 require_relative '../classes/book'
 require_relative '../classes/label'
+require_relative './utils'
 
 module BooksUi
+include Utils
+
   def initialize
     @book_file = 'data/books.json'
     @labels_file = 'data/labels.json'
@@ -18,7 +21,8 @@ module BooksUi
   def add_book
     publisher = prompt_data('Publisher Name: ')
     cover_state = prompt_data('Choose cover state(good/normal/bad): ')
-    publish_date = prompt_data('Published Date(YYYY/MM/DD): ')
+    puts 'add the publish date (yyyy-mm-dd) :'
+    publish_date = input_date
     book = Book.new(publisher, publish_date, cover_state)
     add_label(book)
     @books << book.to_h
@@ -37,8 +41,8 @@ module BooksUi
     end
     @books.each do |book|
       puts "Title: #{book['title']}, Publisher: #{book['publisher']}, Publish date: #{book['publish_date']}, Cover state: #{book['cover_state']}, Color: #{book['label_color']}"
-      puts "Please choose an option by entering a number!\n\n"
     end
+    puts "Please choose an option by entering a number!\n\n"
   end
 
   def add_label(item)
@@ -64,7 +68,7 @@ module BooksUi
     end
     @labels.each do |label|
       puts "Title: #{label['title']}, Color: #{label['color']}"
-      puts "Please choose an option by entering a number!\n\n"
     end
+    puts "Please choose an option by entering a number!\n\n"
   end
 end
