@@ -37,6 +37,7 @@ CREATE TABLE author (
     first_name VARCHAR(100),
     last_name VARCHAR(100),
     PRIMARY KEY(id)
+);
 
 -- Create Book table  
 CREATE TABLE Book(
