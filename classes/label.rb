@@ -1,7 +1,7 @@
 require_relative 'item'
 
 class Label
-  attr_accessor :title, :color
+  attr_accessor :title, :color, :items, :id
 
   def initialize(title, color)
     @id = Random.rand(1..1000)
@@ -11,10 +11,12 @@ class Label
   end
 
   def add_item(item)
-    @items << item unless @items.include?(item)
-    item.label = self # Set the label of the item to the current label object
-    item.title = @title # Set the title of the item to the title of the label
-    item.label_color = @color # Set the label color of the item to the color of the label
+    return if @items.include?(item)
+
+    @items << item
+    item.label = self
+    item.title = @title
+    item.label_color = @color
   end
 
   def to_hash
